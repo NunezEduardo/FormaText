@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FormaText — Bento editor · developed by @_eduardo.nunez</title>
+
+  <!-- Google fonts & icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <div class="brand-text">
+        <div class="product">FormaText</div>
+        <div class="by">desarrollado por @_eduardo.nunez</div>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <select id="templates" aria-label="Plantillas">
+        <option value="">-- Elegir plantilla --</option>
+        <option value="simple">Ensayo simple</option>
+        <option value="lab">Informe de laboratorio</option>
+        <option value="short">Trabajo corto</option>
+      </select>
+
+      <button id="applyTemplate" class="btn">Aplicar</button>
+      <button id="exportPdf" class="btn primary"><span class="material-icons">picture_as_pdf</span> Descargar PDF</button>
+      <button id="reset" class="btn ghost"><span class="material-icons">restart_alt</span> Limpiar</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- Left toolbox -->
+    <aside class="toolbox" aria-label="Paleta de componentes">
+      <h3 class="tb-title">Elementos arrastrables</h3>
+
+      <div class="components">
+        <div class="component" draggable="true" data-type="title" data-color="#7c3aed">
+          <span class="mat material-icons">title</span>
+          <div class="label">Título</div>
+        </div>
+
+        <div class="component" draggable="true" data-type="heading" data-color="#2563eb">
+          <span class="mat material-icons">format_size</span>
+          <div class="label">Encabezado</div>
+        </div>
+
+        <div class="component" draggable="true" data-type="paragraph" data-color="#6b7280">
+          <span class="mat material-icons">article</span>
+          <div class="label">Párrafo</div>
+        </div>
+
+        <div class="component" draggable="true" data-type="quote" data-color="#059669">
+          <span class="mat material-icons">format_quote</span>
+          <div class="label">Cita</div>
+        </div>
+
+        <div class="component" draggable="true" data-type="abstract" data-color="#f59e0b">
+          <span class="mat material-icons">import_contacts</span>
+          <div class="label">Abstract</div>
+        </div>
+
+        <div class="component" draggable="true" data-type="reference" data-color="#10b981">
+          <span class="mat material-icons">menu_book</span>
+          <div class="label">Referencia</div>
+        </div>
+      </div>
+
+
+      <div class="undo-redo">
+        <button id="undoBtn" class="btn ghost" title="Deshacer (Ctrl/Cmd+Z)"><span class="material-icons">undo</span></button>
+        <button id="redoBtn" class="btn ghost" title="Rehacer (Ctrl/Cmd+Y)"><span class="material-icons">redo</span></button>
+      </div>
+    </aside>
+
+    <!-- Right: preview editable -->
+    <section class="preview-column">
+      <div class="editor-toolbar">
+        <div class="meta">
+          <input id="docTitle" placeholder="Título del documento (opcional)" />
+        </div>
+      </div>
+
+      <div id="editor" class="editor" contenteditable="true" spellcheck="true" aria-label="Editor inteligente (arrastra elementos aquí)">
+        <div class="editor-tip">Haz clic aquí y empieza a escribir o arrastra un "Título" desde la paleta.</div>
+      </div>
+
+      <div class="preview-footer">
+        <div class="status" id="status">Editable — arrastra elementos encima</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    FormaText — Desarrollado por @_eduardo.nunez
+  </footer>
+
+  <!-- html2pdf for download -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

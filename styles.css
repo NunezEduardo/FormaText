@@ -1,0 +1,125 @@
+/* FormaText — Bento minimal, fuente Poppins en UI, Times New Roman solo para el documento content */
+:root{
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --accent-1: #06b6d4;
+  --accent-2: #4f46e5;
+  --bento-shadow: 0 8px 30px rgba(15,23,42,0.06);
+  --radius: 12px;
+  --font-sans: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --editor-width: 760px;
+}
+
+/* Reset */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:var(--font-sans);
+  background: linear-gradient(180deg,#fbfdff 0%, #f3f7fb 100%);
+  color:#0b1020;
+  padding:22px;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Header */
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  margin-bottom:18px;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.book-icon{
+  width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent-2),var(--accent-1));
+  color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:24px;padding:6px;
+  box-shadow:var(--bento-shadow);
+}
+.brand-text .product{font-weight:600}
+.brand-text .by{font-size:12px;color:var(--muted)}
+
+.header-actions{display:flex;gap:8px;align-items:center}
+.select, select{padding:8px 10px;border-radius:10px;border:1px solid rgba(10,20,30,0.06)}
+.btn{padding:8px 12px;border-radius:10px;border:none;background:#fff;cursor:pointer;box-shadow:var(--bento-shadow);font-weight:600}
+.btn.primary{background:linear-gradient(90deg,var(--accent-2),var(--accent-1));color:#fff}
+.btn.ghost{background:transparent;border:1px solid rgba(10,20,30,0.04)}
+
+/* Layout */
+.layout{
+  display:grid;
+  grid-template-columns:260px 1fr;
+  gap:18px;
+  align-items:start;
+}
+
+/* Toolbox (left) */
+.toolbox{
+  background:var(--card);padding:14px;border-radius:var(--radius);box-shadow:var(--bento-shadow);border:1px solid rgba(10,20,30,0.03);
+}
+.tb-title{margin:0 0 10px 0;font-weight:600}
+.components{display:grid;gap:8px}
+.component{
+  display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);
+  border:1px solid rgba(10,20,30,0.03);cursor:grab;transition:transform .12s, box-shadow .12s;
+}
+.component:active{cursor:grabbing}
+.component:hover{transform:translateY(-4px);box-shadow:0 16px 30px rgba(12,18,31,0.06)}
+.mat{font-size:20px}
+.label{font-weight:600;font-size:14px}
+
+/* Use component::before to show the palette color only in the toolbox (not inserted into the doc) */
+/* Each palette .component sets --comp-color via inline style in JS */
+.component::before{
+  content:"";
+  width:8px;height:36px;border-radius:6px;margin-right:8px;
+  background:var(--comp-color, #cbd5e1);
+  display:inline-block;
+}
+
+/* Hint */
+.hint{margin-top:10px;font-size:12px;color:var(--muted)}
+
+/* Undo/redo */
+.undo-redo{display:flex;gap:8px;margin-top:12px}
+
+/* Preview column (right) */
+.preview-column{position:relative;display:flex;flex-direction:column;gap:12px}
+.editor-toolbar{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.editor-toolbar input{padding:10px;border-radius:10px;border:1px solid rgba(10,20,30,0.06);width:420px}
+.icon-btn{background:#fff;border-radius:10px;padding:6px;border:1px solid rgba(10,20,30,0.04);cursor:pointer}
+
+/* Editor: UI Poppins, content uses Times New Roman */
+.editor{
+  background:linear-gradient(180deg,#fff,#fbfcff);
+  border-radius:12px;padding:36px;min-height:720px;border:1px solid rgba(10,20,30,0.04);
+  box-shadow:var(--bento-shadow);overflow:auto;
+  /* IMPORTANT: Editor content uses Times New Roman for APA */
+  font-family: "Times New Roman", Times, serif;
+  font-size:12pt;
+  line-height:2;
+  color:#0b1a2b;
+  outline:none;
+}
+
+/* Default tip in editor */
+.editor-tip{color:var(--muted);text-align:center;padding:120px 20px}
+
+/* Styled components inserted into editor (document font = Times New Roman) */
+.ft-title{font-family: "Times New Roman", Times, serif;font-size:22pt;font-weight:700;text-align:center;margin:28px 0}
+.ft-heading{font-family: "Times New Roman", Times, serif;font-size:14pt;font-weight:700;margin:18px 0}
+.ft-paragraph{font-family: "Times New Roman", Times, serif;font-size:12pt;margin:12px 0;white-space:pre-wrap;}
+.ft-quote{font-family: "Times New Roman", Times, serif;border-left:3px solid rgba(0,0,0,0.08);padding-left:12px;margin:12px 0;color:rgba(11,26,43,0.9);font-style:italic}
+.ft-abstract{font-family: "Times New Roman", Times, serif;border-radius:6px;background:rgba(0,0,0,0.02);padding:12px;margin:12px 0}
+.ft-reference{font-family: "Times New Roman", Times, serif;font-size:12pt;margin:8px 0;text-indent:-0.5in;padding-left:0.5in;}
+
+/* Footer status */
+.preview-footer{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:13px}
+
+/* Responsive */
+@media (max-width:1000px){
+  .layout{grid-template-columns:1fr;gap:12px}
+  .editor{min-height:520px;padding:20px}
+}
